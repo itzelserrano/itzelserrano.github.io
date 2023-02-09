@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            background-color: rgb(245, 116, 228);
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color:rgb(95, 0, 158);
+        }
+        nav{
+            float:left;
+            width: 30%;
+            height: 300px;
+            background-color: rgb(221, 193, 240);
+            padding: 20px
+        }
+        nac ul{
+            list-style-type: none;
+            padding: 0;
+        }
+        article{
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: rgba(132, 64, 241, 0.705);
+            height: 300px;
+        }
+        section::after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        footer{
+            background-color: rgba(178, 109, 196, 0.829);
+            padding: 10px;
+            text-align: center;
+        }
+        @media(max-width: 600px){
+            nav, article {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+    </style>
+</head>
+<body bgcolor="#BCA9F5">
+    <header>
+       <h2>Reposteria </h2> 
+    </header> 
+    <section>
+        <nav>
+            <ul>
+                <li>Pateles</li>
+                <li>Pay de limón</li>
+                <li>Donas</li>
+
+            </ul>
+        </nav>
+        <article>
+            <h1>Lista de sabores de pastel</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nulla accusamus odio molestias! Autem consequatur aspernatur quo magnam, veniam, molestiae quasi, repellat obcaecati nostrum labore ullam sit culpa nisi aperiam!
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi ducimus deserunt hic aut, repellat quae, rerum autem repudiandae nostrum facilis perferendis at expedita quibusdam, quia fugiat iste dolore eos delectus.
+            </p>
+        </article>
+    </section>
+    <footer>
+        <p>Pasteleria happy &copy; 2023</p>
+    </footer>
+    <h4>Serrano Gonzalez Itzel Amairany 08/feb/2023</h4>
+</body>
+</html>
