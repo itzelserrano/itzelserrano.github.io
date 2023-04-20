@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2023 a las 02:56:38
+-- Tiempo de generación: 20-04-2023 a las 04:25:50
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -57,6 +57,17 @@ CREATE TABLE `artistas` (
   `imagen` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `artistas`
+--
+
+INSERT INTO `artistas` (`id`, `nombre`, `imagen`) VALUES
+(1, 'ariana grande', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.peakpx.com%2Fes%2Fhd-wallpaper-desktop-vqmfl&psig=AOvVaw3IXv-IbhPzBSBcsy-G87Rh&ust=1682043227352'),
+(2, 'el bebeto', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.instagram.com%2Fbebetooficial%2F%3Fhl%3Den&psig=AOvVaw1BxcB-9g3WKuB0c9Z_Kg6x&ust=168204316594700'),
+(3, 'john lennon', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.glamour.mx%2Fphotos%2F6190c4eff5ed039ceea8d894%2Fmaster%2Fw_320%252Cc_limit%2F36164.jpg&tbnid'),
+(4, 'romeo santos', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fsientelbaile.com%2Fwp-content%2Fuploads%2F2019%2F01%2Fbachata-cantantes-mejores.jpg&tbnid=sqnouvGtP'),
+(5, 'alfredo olivas', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.elsiglocoahuila.mx%2Fcoahuila%2Fm%2Fi%2F2019%2F07%2F915615.jpeg&tbnid=Vme2gfxesoyvNM&vet=12ahUK');
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +107,17 @@ CREATE TABLE `generos` (
   `nombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `generos`
+--
+
+INSERT INTO `generos` (`id`, `nombre`) VALUES
+(1, 'pop'),
+(2, 'banda'),
+(3, 'bachata '),
+(4, 'rock'),
+(5, 'corridos');
+
 -- --------------------------------------------------------
 
 --
@@ -107,6 +129,17 @@ CREATE TABLE `membresia` (
   `nombre` varchar(100) NOT NULL,
   `precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `membresia`
+--
+
+INSERT INTO `membresia` (`id`, `nombre`, `precio`) VALUES
+(1, 'kids', 308),
+(2, 'para estudiantes', 299),
+(3, 'premium family', 100),
+(4, 'premium duo', 100),
+(5, 'premium premium', 500);
 
 -- --------------------------------------------------------
 
@@ -157,7 +190,8 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `albumes`
 --
 ALTER TABLE `albumes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `artista_id` (`artista_id`);
 
 --
 -- Indices de la tabla `album_canciones`
@@ -177,13 +211,17 @@ ALTER TABLE `artistas`
 -- Indices de la tabla `canciones`
 --
 ALTER TABLE `canciones`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `artista_id` (`artista_id`),
+  ADD KEY `genero_id` (`genero_id`);
 
 --
 -- Indices de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cancion_id` (`cancion_id`),
+  ADD KEY `usuarios_id` (`usuarios_id`);
 
 --
 -- Indices de la tabla `generos`
@@ -201,19 +239,23 @@ ALTER TABLE `membresia`
 -- Indices de la tabla `playlist`
 --
 ALTER TABLE `playlist`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `playlist_canciones`
 --
 ALTER TABLE `playlist_canciones`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `canciones_id` (`canciones_id`),
+  ADD KEY `playlist_id` (`playlist_id`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `membresia_id` (`membresia_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -235,7 +277,7 @@ ALTER TABLE `album_canciones`
 -- AUTO_INCREMENT de la tabla `artistas`
 --
 ALTER TABLE `artistas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `favoritas`
@@ -247,13 +289,13 @@ ALTER TABLE `favoritas`
 -- AUTO_INCREMENT de la tabla `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `membresia`
 --
 ALTER TABLE `membresia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `playlist`
@@ -278,11 +320,50 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Filtros para la tabla `albumes`
+--
+ALTER TABLE `albumes`
+  ADD CONSTRAINT `albumes_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`);
+
+--
 -- Filtros para la tabla `album_canciones`
 --
 ALTER TABLE `album_canciones`
   ADD CONSTRAINT `album_canciones_ibfk_1` FOREIGN KEY (`album_id`) REFERENCES `albumes` (`id`),
   ADD CONSTRAINT `album_canciones_ibfk_2` FOREIGN KEY (`cancion_id`) REFERENCES `canciones` (`id`);
+
+--
+-- Filtros para la tabla `canciones`
+--
+ALTER TABLE `canciones`
+  ADD CONSTRAINT `canciones_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`),
+  ADD CONSTRAINT `canciones_ibfk_2` FOREIGN KEY (`genero_id`) REFERENCES `generos` (`id`);
+
+--
+-- Filtros para la tabla `favoritas`
+--
+ALTER TABLE `favoritas`
+  ADD CONSTRAINT `favoritas_ibfk_1` FOREIGN KEY (`cancion_id`) REFERENCES `canciones` (`id`),
+  ADD CONSTRAINT `favoritas_ibfk_2` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `playlist`
+--
+ALTER TABLE `playlist`
+  ADD CONSTRAINT `playlist_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `playlist_canciones`
+--
+ALTER TABLE `playlist_canciones`
+  ADD CONSTRAINT `playlist_canciones_ibfk_1` FOREIGN KEY (`canciones_id`) REFERENCES `canciones` (`id`),
+  ADD CONSTRAINT `playlist_canciones_ibfk_2` FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`membresia_id`) REFERENCES `membresia` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
