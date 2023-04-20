@@ -1,0 +1,21 @@
+tr{
+    color:rgb(128, 0, 248);
+}
+th{
+   color:brown;
+}
+table td:nth-child(1) {
+    background-color: rgb(255, 190, 11);
+  }
+  table td:nth-child(2) {
+    background-color: rgb(255, 170, 101);
+  }
+  table td:nth-child(3) {
+    background-color: #ee8;
+  }
+  table td:nth-child(4) {
+    background-color: rgb(255, 170, 101);
+  }
+  table td:nth-child(5) {
+    background-color: #ee8;
+  }
