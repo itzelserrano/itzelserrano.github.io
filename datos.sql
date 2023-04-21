@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2023 a las 04:25:50
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 21-04-2023 a las 04:33:04
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,6 +33,17 @@ CREATE TABLE `albumes` (
   `artista_id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `albumes`
+--
+
+INSERT INTO `albumes` (`id`, `artista_id`, `nombre`) VALUES
+(1, 1, 'sweetener'),
+(2, 2, 'mi persona preferida'),
+(3, 3, 'double fantasy'),
+(4, 4, 'utopia'),
+(5, 5, 'asi es todo');
 
 -- --------------------------------------------------------
 
@@ -183,6 +195,17 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `usuario`, `telefono`, `membresia_id`) VALUES
+(1, 'jesus gonzalez', 'jesusgonzalez@gmail.com', 'holaaa23', 'jesusgloz', '6675980987', 2),
+(2, 'omar serrano', 'omarserrano@gmail.com', 'comoo56', 'omarserr34', '6674635409', 2),
+(3, 'itzel serrano', 'itzelgood@gmail.com', 'comoooo87', 'itzelglozser', '6675849372', 3),
+(4, 'andres sainz', 'sainandres@gmail,com', 'estasss28', 'andreees', '6673524342', 4),
+(5, 'magui beltran', 'beltranandres@gmail.com', 'arbol78', 'andresfiel', '667585409', 5);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -265,7 +288,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `albumes`
 --
 ALTER TABLE `albumes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `album_canciones`
@@ -313,7 +336,7 @@ ALTER TABLE `playlist_canciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
