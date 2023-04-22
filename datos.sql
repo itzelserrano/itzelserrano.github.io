@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2023 a las 04:33:04
+-- Tiempo de generación: 22-04-2023 a las 03:06:10
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -57,6 +57,17 @@ CREATE TABLE `album_canciones` (
   `cancion_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `album_canciones`
+--
+
+INSERT INTO `album_canciones` (`id`, `album_id`, `cancion_id`) VALUES
+(1, 5, 5),
+(2, 3, 3),
+(3, 2, 4),
+(4, 1, 1),
+(5, 4, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +107,17 @@ CREATE TABLE `canciones` (
   `disponible` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `canciones`
+--
+
+INSERT INTO `canciones` (`id`, `nombre`, `artista_id`, `duracion`, `genero_id`, `fecha`, `disponible`) VALUES
+(1, 'nex', 1, '03:00:00', 1, '2023-04-11', 1),
+(2, 'seremos', 2, '04:00:00', 5, '2023-04-08', 1),
+(3, 'el precio de la soledad', 5, '02:50:00', 5, '2023-04-11', 1),
+(4, 'imagine', 3, '03:50:00', 4, '2023-04-26', 1),
+(5, 'ella y yo', 4, '02:59:00', 3, '2023-04-30', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -107,6 +129,17 @@ CREATE TABLE `favoritas` (
   `usuarios_id` int(11) NOT NULL,
   `cancion_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `favoritas`
+--
+
+INSERT INTO `favoritas` (`id`, `usuarios_id`, `cancion_id`) VALUES
+(1, 4, 5),
+(2, 3, 3),
+(3, 1, 4),
+(4, 5, 1),
+(5, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -166,6 +199,17 @@ CREATE TABLE `playlist` (
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `playlist`
+--
+
+INSERT INTO `playlist` (`id`, `nombre`, `imagen`, `usuario_id`) VALUES
+(1, 'nex', 'imagen1', 4),
+(2, 'arbol verde', 'imagen2', 1),
+(3, 'arbol verde', 'imagen3', 3),
+(4, 'arbol verde', 'imagen4', 5),
+(5, 'arbol verde', 'imagen5', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +221,17 @@ CREATE TABLE `playlist_canciones` (
   `playlist_id` int(11) NOT NULL,
   `canciones_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `playlist_canciones`
+--
+
+INSERT INTO `playlist_canciones` (`id`, `playlist_id`, `canciones_id`) VALUES
+(1, 2, 5),
+(2, 3, 3),
+(3, 4, 4),
+(4, 5, 1),
+(5, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -294,7 +349,7 @@ ALTER TABLE `albumes`
 -- AUTO_INCREMENT de la tabla `album_canciones`
 --
 ALTER TABLE `album_canciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `artistas`
@@ -306,7 +361,7 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`
@@ -324,13 +379,13 @@ ALTER TABLE `membresia`
 -- AUTO_INCREMENT de la tabla `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `playlist_canciones`
 --
 ALTER TABLE `playlist_canciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
