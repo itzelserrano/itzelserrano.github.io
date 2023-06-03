@@ -26,7 +26,7 @@
 
     } 
        echo"<h3>Pregunta 2, respuesta seleccionada: (".$pregunta2.")</h3>";
-    if($pregunta2 =="c"){
+    if($pregunta2 =="b"){
         $calificacion ++;
         echo"<img src='correcta2.png' width='6%'><hr>";
     }else{
@@ -74,7 +74,7 @@
         echo"<img src='incorrecta.png' width='6%'><hr>";
     }
     echo"<h3>Pregunta 8, respuesta seleccionada: (".$pregunta8.")</h3>";
-    if($pregunta8 =="c"){
+    if($pregunta8 =="a"){
         $calificacion ++;
         echo"<img src='correcta2.png' width='6%'><hr>";
     }else{
@@ -82,7 +82,7 @@
         echo"<img src='incorrecta.png' width='6%'><hr>";
     }
     echo"<h3>Pregunta 9, respuesta seleccionada: (".$pregunta9.")</h3>";
-    if($pregunta9 =="b"){
+    if($pregunta9 =="c"){
         $calificacion ++;
         echo"<img src='correcta2.png' width='6%'><hr>";
     }else{
