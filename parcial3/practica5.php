@@ -1,4 +1,4 @@
-<?php
+ <?php
 
     $cuadros = $_POST["cuadro"];
 
@@ -9,49 +9,50 @@
         }
     }
     /*
-    (X)(X)(X)
-    ( )( )( )
-    ( )( )( )
+    [X][X][X]
+    [ ][ ][ ]
+    [ ][ ][ ]
+   
     */
     if($cuadros[0] =="X" && $cuadros[1] =="X" && $cuadros[2] =="X"){
-        echo "<h1>Ganador [X]<br> (X)(X)(X)<br>
-        ()()()<br>
-        ()()()</h1>" ;
+        echo "<h1>Ganador [X]<br> [X][X][X]<br>
+       [ _][ _][ _]<br>
+       [ _][ _][ _]</h1>" ;
         return;
     }else if($cuadros[0] =="O" && $cuadros[1] =="O" && $cuadros[2] =="O"){
-        echo "<h1>Ganador [O] <br> (O)(O)(O)<br>
-                               ()()()<br>
-                               ()()()</h1>";
+        echo "<h1>Ganador [O] <br> [O][O][O]<br>
+                              [ _][ _][ _]<br>
+                              [ _][ _][ _]</h1>";
        
     }
     /*
-    ( )( )( )
-    (O)(X)(X)
-    ( )( )( )
+    [ ][ ][ ]
+    [O][X][X]
+    [ ][ ][ ]
     */
     if($cuadros[3] =="X" && $cuadros[4] =="X" && $cuadros[5] =="X"){
-        echo "<h1>Ganador [X] <br>(X)(X)(X)<br>
-        ()()()<br>
-        ()()()</h1>";
+        echo "<h1>Ganador [X] <br> [ _][ _][ _]<br>
+       [X][X][X]<br>
+        [ _][ _][ _]</h1>";
         return;
     }else if($cuadros[3] =="O" && $cuadros[4] =="O" && $cuadros[5] =="O"){
-        echo "<h1>Ganador [O]<br> (O)(O)(O)<br>
-        ()()()<br>
-        ()()()</h1>";
+        echo "<h1>Ganador [O]<br> [ _][ _][ _]<br>
+        [O][O][O]<br>
+        [ _][ _][ _]</h1>";
     }
      /*
-    ( )( )( )
-    ( )( )( )
-    (X)(O)(X)
+    [ ][ ][ ]
+    [ ][ ][ ]
+    [O][X][X]
     */
     if($cuadros[6] =="X" && $cuadros[7] =="X" && $cuadros[8] =="X"){
-        echo "<h1>Ganador [X]<br>(X)(X)(X)<br>
-        ()()()<br>
-        ()()()</h1>";
+        echo "<h1>Ganador [X]<br>[ _][ _][ _]<br>
+        [ _][ _][ _]<br>
+        [X][X][X]</h1>";
         return;
     }else if($cuadros[6] =="O" && $cuadros[7] =="O" && $cuadros[8] =="O"){
-        echo "<h1>Ganador [O]<br> (O)(O)(O)<br>
-        ()()()<br>
-        ()()()</h1>";
+        echo "<h1>Ganador [O]<br> [ _][ _][ _]<br>
+        [ _][ _][ _]<br>
+        [O][O][O]</h1>";
     } 
 ?>
